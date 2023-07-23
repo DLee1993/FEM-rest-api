@@ -2,7 +2,8 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        fluidTypography: {},
     },
-    plugins: [],
+    // eslint-disable-next-line no-undef
+    plugins: [require("tailwind-fluid-typography")],
 };

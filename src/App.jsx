@@ -1,5 +1,5 @@
 function App() {
-    return <>hello world</>;
+    return <div className="fluid-2xl">hello world</div>;
 }
 
 export default App;
