@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body * {
+        @apply transition-colors duration-200;
+    }
+
+    main {
+        @apply h-screen;
+    }
+
+    .darkMode {
+        @apply bg-darkMode-siteBG text-darkMode-text;
+
+        header {
+            @apply bg-darkMode-componentBG;
+        }
+    }
+
+    .lightMode {
+        @apply bg-lightMode-siteBG text-lightMode-text;
+
+        header {
+            @apply bg-lightMode-componentBG;
+        }
+    }
+}
