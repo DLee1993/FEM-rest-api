@@ -3,6 +3,9 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            fontFamily: {
+                ns: ["Nunito Sans", "sans-serif"],
+            },
             colors: {
                 darkMode: {
                     siteBG: "hsl(207, 26%, 17%)",

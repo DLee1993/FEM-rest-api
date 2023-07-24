@@ -1,11 +1,17 @@
-import { useState } from "react";
-import Header from "./components/Header";
-function App() {
-    const [darkmode, setDarkmode] = useState(false);
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import CountriesList from "./components/CountriesList";
+import CountryPage from "./components/CountryPage";
 
-    return <main className={darkmode ? "darkMode" : "lightMode"}>
-        <Header darkmode={darkmode} setDarkmode={setDarkmode}/>
-    </main>;
+function App() {
+    return (
+        <Routes>
+            <Route path="/FEM-rest-api/" element={<Layout />}>
+                <Route index element={<CountriesList />} />
+                <Route path=":name" element={<CountryPage />} />
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;
