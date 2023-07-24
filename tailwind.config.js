@@ -13,7 +13,7 @@ export default {
                     text: "hsl(0, 0%, 100%)",
                 },
                 lightMode: {
-                    siteBG: "hsl(0, 0%, 98%)",
+                    siteBG: "hsl(0, 0%, 95%)",
                     componentBG: "hsl(0, 0%, 100%)",
                     text: "hsl(207, 26%, 17%)",
                     input: "hsl(0, 0%, 52%)",

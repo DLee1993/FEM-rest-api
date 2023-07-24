@@ -1,21 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply h-screen;
+    }
+
     body * {
         @apply transition-colors duration-200 font-ns;
     }
 
     main {
-        @apply h-screen;
+        @apply min-h-screen;
     }
 
     .darkMode {
         @apply bg-darkMode-siteBG text-darkMode-text;
 
-        header {
+        header,
+        input,
+        select,
+        fieldset {
             @apply bg-darkMode-componentBG;
         }
     }
@@ -23,7 +30,10 @@
     .lightMode {
         @apply bg-lightMode-siteBG text-lightMode-text;
 
-        header {
+        header,
+        input,
+        select,
+        fieldset {
             @apply bg-lightMode-componentBG;
         }
     }
