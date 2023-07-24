@@ -3,18 +3,21 @@ import { BsCloudMoonFill, BsCloudSunFill } from "react-icons/bs";
 
 const Header = ({ darkmode, setDarkmode }) => {
     return (
-        <header className="h-20">
-            <h1>Where in the world?</h1>
-            <button onClick={() => setDarkmode((darkmode) => !darkmode)} className="flex">
+        <header className="h-20 flex justify-between items-center px-2 sm:px-5">
+            <h1 className="fluid-lg font-bold">Where in the world?</h1>
+            <button
+                onClick={() => setDarkmode((darkmode) => !darkmode)}
+                className="flex capitalize"
+            >
                 {darkmode ? (
                     <>
                         <BsCloudSunFill />
-                        <span>light mode</span>
+                        <span className="ml-2 font-semibold">light mode</span>
                     </>
                 ) : (
                     <>
                         <BsCloudMoonFill />
-                        <span>dark mode</span>
+                        <span className="ml-2 font-semibold">dark mode</span>
                     </>
                 )}
             </button>
