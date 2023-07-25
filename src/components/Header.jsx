@@ -1,15 +1,18 @@
 import PropTypes from "prop-types";
 import { BsCloudMoonFill, BsCloudSunFill } from "react-icons/bs";
 
-const Header = ({ darkmode, setDarkmode }) => {
+const Header = ({ theme, setTheme }) => {
+    const toggleTheme = () => {
+        const newTheme = theme === "lightMode" ? "darkMode" : "lightMode";
+        localStorage.setItem("theme", newTheme);
+        setTheme(newTheme);
+    };
+
     return (
         <header className="h-20 flex justify-between items-center px-2 sm:px-5">
             <h1 className="fluid-lg font-bold">Where in the world?</h1>
-            <button
-                onClick={() => setDarkmode((darkmode) => !darkmode)}
-                className="flex capitalize"
-            >
-                {darkmode ? (
+            <button onClick={toggleTheme} className="flex capitalize">
+                {theme === "darkMode" ? (
                     <>
                         <BsCloudSunFill />
                         <span className="ml-2 font-semibold">light mode</span>
@@ -26,8 +29,8 @@ const Header = ({ darkmode, setDarkmode }) => {
 };
 
 Header.propTypes = {
-    darkmode: PropTypes.bool,
-    setDarkmode: PropTypes.func,
+    theme: PropTypes.string,
+    setTheme: PropTypes.func,
 };
 
 export default Header;

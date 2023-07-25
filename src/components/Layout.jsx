@@ -3,10 +3,12 @@ import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-    const [darkmode, setDarkmode] = useState(false);
+    const initialTheme = localStorage.getItem("theme") || "lightMode";
+    const [theme, setTheme] = useState(initialTheme);
+
     return (
-        <main className={darkmode ? "darkMode" : "lightMode"}>
-            <Header darkmode={darkmode} setDarkmode={setDarkmode} />
+        <main className={theme === "darkMode" ? "darkMode" : "lightMode"}>
+            <Header theme={theme} setTheme={setTheme} />
             <Outlet />
         </main>
     );

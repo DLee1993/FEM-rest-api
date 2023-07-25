@@ -1,26 +1,137 @@
 import { useEffect, useState } from "react";
 import reqs from "../api/countries";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 const CountryPage = () => {
+    const { countryName } = useParams();
+    const navigate = useNavigate();
     const [countryInfo, setCountryInfo] = useState();
-    const { name } = useParams();
-
-    console.log(countryInfo)
+    const {
+        name,
+        flags,
+        population,
+        region,
+        subregion,
+        capital,
+        borders,
+        tld,
+        currencies,
+        languages,
+    } = countryInfo || {};
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await reqs.country(name);
-                setCountryInfo(data);
+                const data = await reqs.country(countryName);
+                const country = data.filter((dataPoint) => {
+                    return dataPoint.cca3 === countryName || dataPoint.name.common === countryName;
+                });
+                console.log(country);
+                setCountryInfo(country[0]);
             } catch (error) {
                 throw new Error(error);
             }
         };
 
         fetchData();
-    }, [name]);
+    }, [countryName]);
 
-    return <div>CountryPage</div>;
+    return (
+        <section className="px-2 sm:px-5">
+            <button
+                onClick={() => navigate(-1)}
+                id="backBtn"
+                className="flex justify-evenly items-center px-7 py-2 my-10 rounded"
+            >
+                <BsArrowLeft />
+                <span className="ml-2 font-semibold">Back</span>
+            </button>
+            <section id="country_info">
+                {countryInfo ? (
+                    <article className="flex justify-between items-center max-w-[1400px] min-h-[300px] mx-auto">
+                        <figure className="w-1/3">
+                            <img
+                                src={flags.png}
+                                alt="country flag"
+                                className="w-full max-w-[400px]"
+                            />
+                        </figure>
+                        <section className="w-2/3 h-full pl-5">
+                            <h1 className="fluid-xl font-extrabold">{name.common}</h1>
+                            <section className="flex justify-between items-start w-[90%] my-10">
+                                <ul>
+                                    <li>
+                                        <span className="font-bold">Native Name:</span>{" "}
+                                        {
+                                            Object.values(name.nativeName)[
+                                                Object.values(name.nativeName).length - 1
+                                            ].common
+                                        }
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Population: </span>
+                                        {population}
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Region: </span>
+                                        {region}
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Sub Region: </span>
+                                        {subregion}
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Capital: </span>
+                                        {capital}
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <span className="font-bold">Top Level Domain: </span>
+                                        {tld}
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Currencies:</span>{" "}
+                                        {Object.values(currencies).map((curr, index) => (
+                                            <span key={index}>
+                                                {curr.name}
+                                                {index === Object.keys(currencies).length - 1
+                                                    ? ""
+                                                    : ", "}
+                                            </span>
+                                        ))}
+                                    </li>
+                                    <li>
+                                        <span className="font-bold">Languages:</span>{" "}
+                                        {Object.values(languages).map((lang, index) => (
+                                            <span key={index}>
+                                                {lang}
+                                                {index === Object.keys(languages).length - 1
+                                                    ? ""
+                                                    : ", "}
+                                            </span>
+                                        ))}
+                                    </li>
+                                </ul>
+                            </section>
+                            <section className="flex justify-start items-center flex-wrap">
+                                <p className="font-bold mr-10">Border Countries: </p>
+                                {borders?.map((border, index) => (
+                                    <Link
+                                        to={`/FEM-rest-api/${border}`}
+                                        key={index}
+                                        className="mx-2 px-7 py-1"
+                                    >
+                                        {border}
+                                    </Link>
+                                ))}
+                            </section>
+                        </section>
+                    </article>
+                ) : null}
+            </section>
+        </section>
+    );
 };
 
 export default CountryPage;

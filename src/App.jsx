@@ -8,7 +8,7 @@ function App() {
         <Routes>
             <Route path="/FEM-rest-api/" element={<Layout />}>
                 <Route index element={<CountriesList />} />
-                <Route path=":name" element={<CountryPage />} />
+                <Route path=":countryName" element={<CountryPage />} />
             </Route>
         </Routes>
     );

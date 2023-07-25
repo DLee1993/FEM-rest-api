@@ -28,7 +28,7 @@ const CountriesList = () => {
             }
 
             if (search) {
-                console.log(search)
+                console.log(search);
                 try {
                     const data = await reqs.name(search);
                     setCountries(data);
@@ -88,7 +88,7 @@ const CountriesList = () => {
                 </fieldset>
             </section>
             <section id="filteredList">
-                <ul className="flex justify-between items-center flex-wrap">
+                <ul className="grid grid-cols-4 gap-10">
                     {countries.map((country, index) => (
                         <CountryArticle country={country} key={index} />
                     ))}
