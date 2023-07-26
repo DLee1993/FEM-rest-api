@@ -34,19 +34,29 @@ Users should be able to:
 
 ## My process
 
+So the process for this challenge is actually quite straightforward, you make an api request, take the data array, map over that data to get the individual countries and then add that data to the jsx, you will also need to loop through objects and arrays in the individual data to get multiple values back, i.e. languages, currencies are objects in the individual data objects. And then add all values to the jsx
+
 ### Built with
 
 -   Semantic HTML5 markup
+-   Tailwindcss
+-   React
+-   Flexbox
 -   Mobile-first workflow
 -   [React](https://reactjs.org/) - JS library
 
 ### What I learned
 
+This challenge is great for working with fetch requests and json data from an api, this also allowed me to work with multiple fetch request with different endpoints based on the page the user is on. I also practiced taking the response data and looping through the data array and the individual objects(countries) and taking specific key value pairs to add to the jsx. I used react router dom to help with adding params to the request to fetch the correct piece of data needed. I also used react icons for the icons.
+
 ### Continued development
+
+I will continue to develop my skills in using api's, fetch and json data. I will also be improving my tailwindcss skills
 
 ### Useful resources
 
 -   Tailwindcss Docs (https://www.tailwindcss.com)
+-   React Icons (https://react-icons.github.io/react-icons/)
 
 ## Author
 
