@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 const CountryArticle = ({ country }) => {
-    console.log(country)
     const { flags, name, population, region, capital } = country;
     return (
         <li className="w-[90%] max-w-[320px] mb-10">
