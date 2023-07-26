@@ -42,7 +42,7 @@ const CountriesList = () => {
     }, [region, search]);
 
     return (
-        <section className="px-2 sm:px-5">
+        <section className="max-w-[1400px] mx-auto px-2 md:px-5">
             <section
                 id="searchFilters"
                 className="flex justify-between items-start flex-col sm:flex-row my-10"
@@ -88,7 +88,7 @@ const CountriesList = () => {
                 </fieldset>
             </section>
             <section id="filteredList">
-                <ul className="grid grid-cols-4 gap-10">
+                <ul className="flex justify-center sm:justify-between items-center flex-wrap">
                     {countries.map((country, index) => (
                         <CountryArticle country={country} key={index} />
                     ))}

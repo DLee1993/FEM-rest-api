@@ -28,7 +28,12 @@
             @apply bg-darkMode-componentBG;
         }
 
-        #backBtn, .borderCountry {
+        figure {
+            @apply border-b-2 border-darkMode-siteBG;
+        }
+
+        #backBtn,
+        .borderCountry {
             @apply shadow-[0px_3px_10px_1px_rgba(16,22,32,0.5)];
         }
     }
@@ -45,7 +50,12 @@
             @apply bg-lightMode-componentBG;
         }
 
-        #backBtn, .borderCountry {
+        figure {
+            @apply border-b-2 border-lightMode-siteBG;
+        }
+
+        #backBtn,
+        .borderCountry {
             @apply shadow-[0px_3px_10px_1px_rgba(0,0,0,0.2)];
         }
     }

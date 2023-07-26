@@ -43,7 +43,7 @@ const CountryPage = () => {
     }, [country]);
 
     return (
-        <section className="px-2 sm:px-5">
+        <section className="max-w-[1400px] mx-auto px-2 md:px-5">
             <button
                 onClick={() => navigate(-1)}
                 id="backBtn"
@@ -54,17 +54,17 @@ const CountryPage = () => {
             </button>
             <section id="country_info">
                 {countryInfo ? (
-                    <article className="flex justify-between items-center max-w-[1400px] min-h-[300px] mx-auto">
-                        <figure className="w-1/3">
+                    <article className="flex justify-between items-start md:items-center flex-col lg:flex-row min-h-[300px] mx-auto">
+                        <figure className="w-full md:w-3/4 lg:w-1/2">
                             <img
                                 src={flags.png}
                                 alt="country flag"
-                                className="w-full max-w-[400px]"
+                                className="w-full"
                             />
                         </figure>
-                        <section className="w-2/3 h-full p-5">
+                        <section className="w-full md:w-3/4 lg:w-2/3 h-full py-5 lg:p-5">
                             <h1 className="fluid-xl font-extrabold">{name.common}</h1>
-                            <section className="flex justify-between items-start w-[90%] my-10">
+                            <section className="flex justify-between items-start md:w-[90%] my-10">
                                 <ul>
                                     <li>
                                         <span className="font-bold">Native Name:</span>{" "}

@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 const CountryArticle = ({ country }) => {
     const { flags, name, population, region, capital } = country;
     return (
-        <li>
+        <li className="w-[90%] max-w-[320px] mb-10">
             <a href={`${country.name.common}`}>
-                <article className="h-[400px] bg-white rounded">
-                    <figure className="h-2/5 border-b-2 border-gray-50">
+                <article className="h-[425px] bg-white rounded">
+                    <figure className="h-2/5">
                         <img src={flags.png} alt="country flag" className="h-full w-full" />
                     </figure>
                     <section
@@ -18,8 +18,7 @@ const CountryArticle = ({ country }) => {
                         </h1>
                         <ul className="h-2/3 flex flex-col justify-evenly items-start">
                             <li>
-                                <span className="font-semibold"> Population: </span>{" "}
-                                {population}
+                                <span className="font-semibold"> Population: </span> {population}
                             </li>
                             <li>
                                 <span className="font-semibold"> Region: </span> {region}
