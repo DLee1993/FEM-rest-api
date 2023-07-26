@@ -8,8 +8,8 @@ const all = async () => {
     return await res.json();
 };
 
-const name = async (name) => {
-    const res = await fetch(`${API_URL}/name/${name}`);
+const name = async (country) => {
+    const res = await fetch(`${API_URL}/name/${country}`);
 
     if (!res.ok) throw new Error("Unable to find the requested country");
 
