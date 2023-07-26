@@ -3,7 +3,7 @@ import reqs from "../api/countries";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 const CountryPage = () => {
-    const { countryName } = useParams();
+    const { country } = useParams();
     const navigate = useNavigate();
     const [countryInfo, setCountryInfo] = useState();
     const {
@@ -21,20 +21,26 @@ const CountryPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const data = await reqs.country(countryName);
-                const country = data.filter((dataPoint) => {
-                    return dataPoint.cca3 === countryName || dataPoint.name.common === countryName;
-                });
-                console.log(country);
-                setCountryInfo(country[0]);
-            } catch (error) {
-                throw new Error(error);
+            if (country.length <= 3) {
+                try {
+                    const data = await reqs.country(country);
+                    const filter = await data.filter((dataPoint) => dataPoint.cca3 === country);
+                    setCountryInfo(filter[0]);
+                } catch (error) {
+                    throw new Error(error);
+                }
+            } else {
+                try {
+                    const data = await reqs.name(country);
+                    setCountryInfo(data[0]);
+                } catch (error) {
+                    throw new Error(error);
+                }
             }
         };
 
         fetchData();
-    }, [countryName]);
+    }, [country]);
 
     return (
         <section className="px-2 sm:px-5">
@@ -56,7 +62,7 @@ const CountryPage = () => {
                                 className="w-full max-w-[400px]"
                             />
                         </figure>
-                        <section className="w-2/3 h-full pl-5">
+                        <section className="w-2/3 h-full p-5">
                             <h1 className="fluid-xl font-extrabold">{name.common}</h1>
                             <section className="flex justify-between items-start w-[90%] my-10">
                                 <ul>
@@ -92,14 +98,16 @@ const CountryPage = () => {
                                     </li>
                                     <li>
                                         <span className="font-bold">Currencies:</span>{" "}
-                                        {Object.values(currencies).map((curr, index) => (
-                                            <span key={index}>
-                                                {curr.name}
-                                                {index === Object.keys(currencies).length - 1
-                                                    ? ""
-                                                    : ", "}
-                                            </span>
-                                        ))}
+                                        {currencies
+                                            ? Object.values(currencies).map((curr, index) => (
+                                                  <span key={index}>
+                                                      {curr.name}
+                                                      {index === Object.keys(currencies).length - 1
+                                                          ? ""
+                                                          : ", "}
+                                                  </span>
+                                              ))
+                                            : null}
                                     </li>
                                     <li>
                                         <span className="font-bold">Languages:</span>{" "}
@@ -116,15 +124,18 @@ const CountryPage = () => {
                             </section>
                             <section className="flex justify-start items-center flex-wrap">
                                 <p className="font-bold mr-10">Border Countries: </p>
-                                {borders?.map((border, index) => (
-                                    <Link
-                                        to={`/FEM-rest-api/${border}`}
-                                        key={index}
-                                        className="mx-2 px-7 py-1"
-                                    >
-                                        {border}
-                                    </Link>
-                                ))}
+                                <ul className="flex justify-start items-center flex-wrap">
+                                    {borders?.map((border, index) => (
+                                        <li key={index} className="mt-5">
+                                            <Link
+                                                to={`/FEM-rest-api/${border}`}
+                                                className="borderCountry mx-2 px-7 py-1"
+                                            >
+                                                {border}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
                             </section>
                         </section>
                     </article>

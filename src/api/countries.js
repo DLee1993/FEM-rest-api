@@ -25,7 +25,7 @@ const region = async (region) => {
 };
 
 const country = async (paramName) => {
-    const res = await fetch(`${API_URL}/name/${paramName}`);
+    const res = await fetch(`${API_URL}/alpha?codes=${paramName}`);
 
     if (!res.ok) throw new Error("Unable to find the requested country");
 

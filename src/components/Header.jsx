@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BsCloudMoonFill, BsCloudSunFill } from "react-icons/bs";
 
 const Header = ({ theme, setTheme }) => {
+    const baseURL = "/FEM-rest-api/";
     const toggleTheme = () => {
         const newTheme = theme === "lightMode" ? "darkMode" : "lightMode";
         localStorage.setItem("theme", newTheme);
@@ -10,7 +12,9 @@ const Header = ({ theme, setTheme }) => {
 
     return (
         <header className="h-20 flex justify-between items-center px-2 sm:px-5">
-            <h1 className="fluid-lg font-bold">Where in the world?</h1>
+            <Link to={baseURL}>
+                <h1 className="fluid-lg font-bold">Where in the world?</h1>
+            </Link>
             <button onClick={toggleTheme} className="flex capitalize">
                 {theme === "darkMode" ? (
                     <>

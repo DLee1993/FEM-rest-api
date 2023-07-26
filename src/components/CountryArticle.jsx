@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const CountryArticle = ({ country }) => {
-    const { flags } = country;
+    const { flags, name, population, region, capital } = country;
     return (
         <li>
             <a href={`${country.name.common}`}>
@@ -14,18 +14,18 @@ const CountryArticle = ({ country }) => {
                         className="h-3/5 flex flex-col justify-evenly items-start p-5"
                     >
                         <h1 className="fluid-lg font-extrabold h-1/3 flex justify-start items-center">
-                            {country.name.common}
+                            {name.common}
                         </h1>
                         <ul className="h-2/3 flex flex-col justify-evenly items-start">
                             <li>
                                 <span className="font-semibold"> Population: </span>{" "}
-                                {country.population}
+                                {population}
                             </li>
                             <li>
-                                <span className="font-semibold"> Region: </span> {country.region}
+                                <span className="font-semibold"> Region: </span> {region}
                             </li>
                             <li>
-                                <span className="font-semibold"> Capital: </span> {country.capital}
+                                <span className="font-semibold"> Capital: </span> {capital}
                             </li>
                         </ul>
                     </section>
