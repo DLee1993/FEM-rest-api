@@ -10,7 +10,6 @@ lerna-debug.log*
 node_modules
 design
 style-guide.md
-data.json
 dist
 dist-ssr
 *.local
