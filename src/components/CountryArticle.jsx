@@ -4,7 +4,7 @@ const CountryArticle = ({ country }) => {
     const { flags, name, population, region, capital } = country;
     return (
         <li className="w-[90%] max-w-[320px] mb-10">
-            <a href={`${country.name}`}>
+            <a href={`${name}`}>
                 <article className="h-[425px] bg-white rounded">
                     <figure className="h-2/5">
                         <img src={flags.png} alt="country flag" className="h-full w-full" />
