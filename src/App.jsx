@@ -8,7 +8,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<CountriesList />} />
-                <Route path="/:country" element={<CountryPage />} />
+                <Route path=":country" element={<CountryPage />} />
             </Route>
         </Routes>
     );
