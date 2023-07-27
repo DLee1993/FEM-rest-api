@@ -8,27 +8,23 @@ const CountriesList = () => {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        const fetchData = async () => {
-            if (region === "all" || region === "" || search === "") {
-                setCountries(data);
-            }
+        if (region === "all" || region === "" || search === "") {
+            setCountries(data);
+        }
 
-            if (region) {
-                const dataFilter = data.filter(
-                    (dataPoint) => dataPoint.region.toLowerCase() === region
-                );
-                setCountries(dataFilter);
-            }
+        if (region) {
+            const dataFilter = data.filter(
+                (dataPoint) => dataPoint.region.toLowerCase() === region
+            );
+            setCountries(dataFilter);
+        }
 
-            if (search) {
-                const dataFilter = data.filter((dataPoint) =>
-                    dataPoint.name.toLowerCase().includes(search.toLowerCase())
-                );
-                setCountries(dataFilter);
-            }
-        };
-
-        fetchData();
+        if (search) {
+            const dataFilter = data.filter((dataPoint) =>
+                dataPoint.name.toLowerCase().includes(search.toLowerCase())
+            );
+            setCountries(dataFilter);
+        }
     }, [region, search]);
 
     return (

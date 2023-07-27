@@ -21,19 +21,15 @@ const CountryPage = () => {
     } = countryInfo || {};
 
     useEffect(() => {
-        const fetchData = async () => {
-            if (country.length <= 3) {
-                const dataFilter = data.filter((dataPoint) => dataPoint.alpha3Code === country);
-                setCountryInfo(dataFilter[0]);
-            } else {
-                const dataFilter = data.filter(
-                    (dataPoint) => dataPoint.name.toLowerCase() === country.toLowerCase()
-                );
-                setCountryInfo(dataFilter[0]);
-            }
-        };
-
-        fetchData();
+        if (country.length <= 3) {
+            const dataFilter = data.filter((dataPoint) => dataPoint.alpha3Code === country);
+            setCountryInfo(dataFilter[0]);
+        } else {
+            const dataFilter = data.filter(
+                (dataPoint) => dataPoint.name.toLowerCase() === country.toLowerCase()
+            );
+            setCountryInfo(dataFilter[0]);
+        }
     }, [country]);
 
     return (

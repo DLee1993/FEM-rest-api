@@ -47,11 +47,11 @@ So the process for this challenge is actually quite straightforward, you make an
 
 ### What I learned
 
-This challenge is great for working with fetch requests and json data from an api, this also allowed me to work with multiple fetch request with different endpoints based on the page the user is on. I also practiced taking the response data and looping through the data array and the individual objects(countries) and taking specific key value pairs to add to the jsx. I used react router dom to help with adding params to the request to fetch the correct piece of data needed. I also used react icons for the icons.
+This challenge is great for working with json data, I also practiced taking the data and looping through the data array and the individual objects(countries) and taking specific key value pairs to add to the jsx. I used react router dom to help with adding params to filter the data for the specific country. I also used react icons for the icons.
 
 ### Continued development
 
-I will continue to develop my skills in using api's, fetch and json data. I will also be improving my tailwindcss skills
+I will continue to develop my skills in using json data. I will also be improving my tailwindcss skills
 
 ### Useful resources
 
