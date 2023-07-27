@@ -6,9 +6,9 @@ import CountryPage from "./components/CountryPage";
 function App() {
     return (
         <Routes>
-            <Route path="/FEM-rest-api" element={<Layout />}>
+            <Route path="/" element={<Layout />}>
                 <Route index element={<CountriesList />} />
-                <Route path=":country" element={<CountryPage />} />
+                <Route path="/:country" element={<CountryPage />} />
             </Route>
         </Routes>
     );
