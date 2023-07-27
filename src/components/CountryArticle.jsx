@@ -4,7 +4,7 @@ const CountryArticle = ({ country }) => {
     const { flags, name, population, region, capital } = country;
     return (
         <li className="w-[90%] max-w-[320px] mb-10">
-            <a href={`${country.name.common}`}>
+            <a href={`${country.name}`}>
                 <article className="h-[425px] bg-white rounded">
                     <figure className="h-2/5">
                         <img src={flags.png} alt="country flag" className="h-full w-full" />
@@ -14,7 +14,7 @@ const CountryArticle = ({ country }) => {
                         className="h-3/5 flex flex-col justify-evenly items-start p-5"
                     >
                         <h1 className="fluid-lg font-extrabold h-1/3 flex justify-start items-center">
-                            {name.common}
+                            {name}
                         </h1>
                         <ul className="h-2/3 flex flex-col justify-evenly items-start">
                             <li>

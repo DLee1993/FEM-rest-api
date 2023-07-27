@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import reqs from "../api/countries";
 import CountryArticle from "./CountryArticle";
 import { BiSearch } from "react-icons/bi";
+import data from "../data.json";
 const CountriesList = () => {
     const [countries, setCountries] = useState([]);
     const [region, setRegion] = useState("");
@@ -10,31 +10,21 @@ const CountriesList = () => {
     useEffect(() => {
         const fetchData = async () => {
             if (region === "all" || region === "" || search === "") {
-                try {
-                    const data = await reqs.all();
-                    setCountries(data);
-                } catch (error) {
-                    console.log(error);
-                }
+                setCountries(data);
             }
 
             if (region) {
-                try {
-                    const data = await reqs.region(region);
-                    setCountries(data);
-                } catch (error) {
-                    console.log(error);
-                }
+                const dataFilter = data.filter(
+                    (dataPoint) => dataPoint.region.toLowerCase() === region
+                );
+                setCountries(dataFilter);
             }
 
             if (search) {
-                console.log(search);
-                try {
-                    const data = await reqs.name(search);
-                    setCountries(data);
-                } catch (error) {
-                    console.log(error);
-                }
+                const dataFilter = data.filter((dataPoint) =>
+                    dataPoint.name.toLowerCase().includes(search.toLowerCase())
+                );
+                setCountries(dataFilter);
             }
         };
 
@@ -80,7 +70,7 @@ const CountriesList = () => {
                         </option>
                         <option value="">All</option>
                         <option value="africa">Africa</option>
-                        <option value="america">America</option>
+                        <option value="americas">Americas</option>
                         <option value="asia">Asia</option>
                         <option value="europe">Europe</option>
                         <option value="oceania">Oceania</option>
@@ -99,5 +89,3 @@ const CountriesList = () => {
 };
 
 export default CountriesList;
-
-//https://github.com/jerson100/Rest-countries-api/blob/master/src/components/common/CountriesList/CountriesList.jsx

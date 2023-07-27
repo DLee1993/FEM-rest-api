@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import reqs from "../api/countries";
+import data from "../data.json";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 const CountryPage = () => {
@@ -8,13 +8,14 @@ const CountryPage = () => {
     const [countryInfo, setCountryInfo] = useState();
     const {
         name,
+        nativeName,
         flags,
         population,
         region,
         subregion,
         capital,
         borders,
-        tld,
+        topLevelDomain,
         currencies,
         languages,
     } = countryInfo || {};
@@ -22,20 +23,13 @@ const CountryPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             if (country.length <= 3) {
-                try {
-                    const data = await reqs.country(country);
-                    const filter = await data.filter((dataPoint) => dataPoint.cca3 === country);
-                    setCountryInfo(filter[0]);
-                } catch (error) {
-                    throw new Error(error);
-                }
+                const dataFilter = data.filter((dataPoint) => dataPoint.alpha3Code === country);
+                setCountryInfo(dataFilter[0]);
             } else {
-                try {
-                    const data = await reqs.name(country);
-                    setCountryInfo(data[0]);
-                } catch (error) {
-                    throw new Error(error);
-                }
+                const dataFilter = data.filter(
+                    (dataPoint) => dataPoint.name.toLowerCase() === country.toLowerCase()
+                );
+                setCountryInfo(dataFilter[0]);
             }
         };
 
@@ -56,23 +50,14 @@ const CountryPage = () => {
                 {countryInfo ? (
                     <article className="flex justify-between items-start md:items-center flex-col lg:flex-row min-h-[300px] mx-auto">
                         <figure className="w-full md:w-3/4 lg:w-1/2">
-                            <img
-                                src={flags.png}
-                                alt="country flag"
-                                className="w-full"
-                            />
+                            <img src={flags.png} alt="country flag" className="w-full" />
                         </figure>
                         <section className="w-full md:w-3/4 lg:w-2/3 h-full py-5 lg:p-5">
-                            <h1 className="fluid-xl font-extrabold">{name.common}</h1>
+                            <h1 className="fluid-xl font-extrabold">{name}</h1>
                             <section className="flex justify-between items-start md:w-[90%] my-10">
                                 <ul>
                                     <li>
-                                        <span className="font-bold">Native Name:</span>{" "}
-                                        {
-                                            Object.values(name.nativeName)[
-                                                Object.values(name.nativeName).length - 1
-                                            ].common
-                                        }
+                                        <span className="font-bold">Native Name:</span> {nativeName}
                                     </li>
                                     <li>
                                         <span className="font-bold">Population: </span>
@@ -94,29 +79,23 @@ const CountryPage = () => {
                                 <ul>
                                     <li>
                                         <span className="font-bold">Top Level Domain: </span>
-                                        {tld}
+                                        {topLevelDomain}
                                     </li>
                                     <li>
                                         <span className="font-bold">Currencies:</span>{" "}
-                                        {currencies
-                                            ? Object.values(currencies).map((curr, index) => (
-                                                  <span key={index}>
-                                                      {curr.name}
-                                                      {index === Object.keys(currencies).length - 1
-                                                          ? ""
-                                                          : ", "}
-                                                  </span>
-                                              ))
-                                            : null}
+                                        {currencies?.map((curr, index) => (
+                                            <span key={index}>
+                                                {curr.name}
+                                                {index === currencies.length - 1 ? "" : ", "}
+                                            </span>
+                                        ))}
                                     </li>
                                     <li>
                                         <span className="font-bold">Languages:</span>{" "}
-                                        {Object.values(languages).map((lang, index) => (
+                                        {languages?.map((lang, index) => (
                                             <span key={index}>
-                                                {lang}
-                                                {index === Object.keys(languages).length - 1
-                                                    ? ""
-                                                    : ", "}
+                                                {lang.name}
+                                                {index === languages.length - 1 ? "" : ", "}
                                             </span>
                                         ))}
                                     </li>
