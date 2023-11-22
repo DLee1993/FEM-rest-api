@@ -4,6 +4,9 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        scrollbar-gutter: stable;
+    }
     body {
         @apply h-screen;
     }
@@ -58,5 +61,13 @@
         .borderCountry {
             @apply shadow-[0px_3px_10px_1px_rgba(0,0,0,0.2)];
         }
+    }
+
+    #filteredList {
+        columns: 250px;
+    }
+
+    article {
+        break-inside: avoid-column;
     }
 }

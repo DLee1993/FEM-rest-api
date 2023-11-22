@@ -33,22 +33,31 @@ const CountryPage = () => {
     }, [country]);
 
     return (
-        <section className="max-w-[1400px] mx-auto px-2 md:px-5">
-            <button
-                onClick={() => navigate(-1)}
-                id="backBtn"
-                className="flex justify-evenly items-center px-7 py-2 my-10 rounded"
-            >
-                <BsArrowLeft />
-                <span className="ml-2 font-semibold">Back</span>
-            </button>
+        <section className="max-w-[1400px] mx-auto px-2 md:px-0">
+            <aside className="flex justify-evenly items-center my-10 gap-10 w-fit">
+                <button
+                    onClick={() => navigate("/")}
+                    id="backBtn"
+                    className="px-7 py-2 rounded font-semibold"
+                >
+                    Home
+                </button>
+                <button
+                    onClick={() => navigate(-1)}
+                    id="backBtn"
+                    className="flex justify-evenly items-center px-7 py-2 rounded"
+                >
+                    <BsArrowLeft />
+                    <span className="ml-2 font-semibold">Back</span>
+                </button>
+            </aside>
             <section id="country_info">
                 {countryInfo ? (
-                    <article className="flex justify-between items-start md:items-center flex-col lg:flex-row min-h-[300px] mx-auto">
-                        <figure className="w-full md:w-3/4 lg:w-1/2">
-                            <img src={flags.png} alt="country flag" className="w-full" />
+                    <article className="flex justify-between items-start md:items-center flex-col lg:flex-row gap-x-6 h-[450px] min-h-[300px] mx-auto">
+                        <figure className="w-full h-full md:w-3/4 lg:w-1/2 flex justify-center items-center p-5">
+                            <img src={flags.png} alt="country flag" className="h-full" />
                         </figure>
-                        <section className="w-full md:w-3/4 lg:w-2/3 h-full py-5 lg:p-5">
+                        <section className="w-full md:w-3/4 lg:w-2/3 h-full p-5">
                             <h1 className="fluid-xl font-extrabold">{name}</h1>
                             <section className="flex justify-between items-start md:w-[90%] my-10">
                                 <ul>
@@ -99,18 +108,22 @@ const CountryPage = () => {
                             </section>
                             <section className="flex justify-start items-center flex-wrap">
                                 <p className="font-bold mr-10">Border Countries: </p>
-                                <ul className="flex justify-start items-center flex-wrap">
-                                    {borders?.map((border, index) => (
-                                        <li key={index} className="mt-5">
-                                            <Link
-                                                to={`/${border}`}
-                                                className="borderCountry mx-2 px-7 py-1"
-                                            >
-                                                {border}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
+                                {!borders ? (
+                                    "No countries border this country"
+                                ) : (
+                                    <ul className="flex justify-start items-center flex-wrap">
+                                        {borders?.map((border, index) => (
+                                            <li key={index} className="mt-5">
+                                                <Link
+                                                    to={`/${border}`}
+                                                    className="borderCountry mx-2 px-7 py-1"
+                                                >
+                                                    {border}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </section>
                         </section>
                     </article>

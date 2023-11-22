@@ -74,11 +74,9 @@ const CountriesList = () => {
                 </fieldset>
             </section>
             <section id="filteredList">
-                <ul className="flex justify-center sm:justify-between items-center flex-wrap">
-                    {countries.map((country, index) => (
-                        <CountryArticle country={country} key={index} />
-                    ))}
-                </ul>
+                {countries.map((country, index) => (
+                    <CountryArticle country={country} key={index} />
+                ))}
             </section>
         </section>
     );
