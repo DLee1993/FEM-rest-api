@@ -103,7 +103,7 @@ const CountryPage = () => {
                                     {borders?.map((border, index) => (
                                         <li key={index} className="mt-5">
                                             <Link
-                                                to={`/FEM-rest-api/${border}`}
+                                                to={`${border}`}
                                                 className="borderCountry mx-2 px-7 py-1"
                                             >
                                                 {border}
