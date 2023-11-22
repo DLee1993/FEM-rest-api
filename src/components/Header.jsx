@@ -11,7 +11,7 @@ const Header = ({ theme, setTheme }) => {
 
     return (
         <header className="h-20 flex justify-between items-center px-2 sm:px-5 max-w-[1400px] mx-auto">
-            <Link to="/">
+            <Link to="/FEM-rest-api/">
                 <h1 className="fluid-lg font-bold">Where in the world?</h1>
             </Link>
             <button onClick={toggleTheme} className="flex capitalize">

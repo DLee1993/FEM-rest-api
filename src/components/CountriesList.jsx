@@ -28,7 +28,7 @@ const CountriesList = () => {
     }, [region, search]);
 
     return (
-        <section className="max-w-[1400px] mx-auto px-2 md:px-5">
+        <section className="max-w-[1400px] mx-auto">
             <section
                 id="searchFilters"
                 className="flex justify-between items-start flex-col sm:flex-row my-10"
