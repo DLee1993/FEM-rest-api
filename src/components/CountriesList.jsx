@@ -29,6 +29,7 @@ const CountriesList = () => {
 
     return (
         <section className="max-w-[1400px] mx-auto">
+            <h2 className="fluid-lg font-extrabold sr-only">Countries List Container</h2>
             <section
                 id="searchFilters"
                 className="flex justify-between items-start flex-col sm:flex-row my-10"
@@ -75,6 +76,7 @@ const CountriesList = () => {
                 </fieldset>
             </section>
             <section id="filteredList">
+                <h2 className="fluid-lg font-extrabold sr-only">Country List</h2>
                 {countries.map((country, index) => (
                     <CountryArticle country={country} key={index} id={index} />
                 ))}
