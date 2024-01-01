@@ -33,6 +33,7 @@ const CountriesList = () => {
                 id="searchFilters"
                 className="flex justify-between items-start flex-col sm:flex-row my-10"
             >
+                <h2 className="fluid-lg font-extrabold sr-only">Country Filters</h2>
                 <fieldset className="flex justify-center items-center bg-white w-[300px] md:w-[400px]">
                     <label htmlFor="search" className="sr-only">
                         search input

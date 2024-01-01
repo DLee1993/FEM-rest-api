@@ -4,11 +4,10 @@ const CountryArticle = ({ country, id }) => {
     const { flags, name, population, region, capital } = country;
     return (
         <article className="mb-10 hover:shadow-lg hover:scale-105 transition-all">
-            <h2 className="fluid-lg font-extrabold sr-only">
-                {name}
-            </h2>
+            <h2 className="fluid-lg font-extrabold sr-only">{name}</h2>
             <a href={`${name}`}>
                 <article className="h-[400px] bg-white rounded">
+                    <h2 className="fluid-lg font-extrabold sr-only">Country Details</h2>
                     <figure className="h-2/5">
                         <img src={flags.png} alt="country flag" className="h-full w-full" />
                     </figure>
