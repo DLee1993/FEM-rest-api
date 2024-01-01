@@ -5,7 +5,7 @@ const CountryArticle = ({ country, id }) => {
     return (
         <article className="mb-10 hover:shadow-lg hover:scale-105 transition-all">
             <h2 className="fluid-lg font-extrabold sr-only">{name}</h2>
-            <a href={`${name}`}>
+            <a href={`${name.replaceAll(" ", "%20")}`}>
                 <article className="h-[400px] bg-white rounded">
                     <h2 className="fluid-lg font-extrabold sr-only">Country Details</h2>
                     <figure className="h-2/5">
