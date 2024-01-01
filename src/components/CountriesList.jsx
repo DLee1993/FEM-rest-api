@@ -75,7 +75,7 @@ const CountriesList = () => {
             </section>
             <section id="filteredList">
                 {countries.map((country, index) => (
-                    <CountryArticle country={country} key={index} />
+                    <CountryArticle country={country} key={index} id={index} />
                 ))}
             </section>
         </section>

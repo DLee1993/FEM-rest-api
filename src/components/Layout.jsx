@@ -8,6 +8,7 @@ const Layout = () => {
 
     return (
         <main className={theme === "darkMode" ? "darkMode" : "lightMode"}>
+            <h1 className="fluid-lg font-extrabold sr-only">Countries Rest Api</h1>
             <Header theme={theme} setTheme={setTheme} />
             <Outlet />
         </main>
